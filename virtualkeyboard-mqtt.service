@@ -1,0 +1,8 @@
+[Unit]
+Description=Virtual Keyboard
+
+[Service]
+ExecStart=/usr/local/sbin/virtualkeyboard-mqtt
+
+[Install]
+WantedBy=multi-user.target
