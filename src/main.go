@@ -39,9 +39,6 @@ func main() {
 	uid := "virtualkeyboard-" + xid.New().String()
 	opts.SetClientID(uid)
 
-	//opts.SetUsername(*user)
-	//opts.SetPassword(*password)
-
 	choke := make(chan [2]string)
 	opts.SetDefaultPublishHandler(func(client mqtt.Client, msg mqtt.Message) {
 		choke <- [2]string{msg.Topic(), string(msg.Payload())}

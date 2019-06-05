@@ -1,5 +1,5 @@
 [Unit]
-Description=Virtual Keyboard
+Description=MQTT Virtual Keyboard
 
 [Service]
 ExecStart=/usr/local/sbin/virtualkeyboard-mqtt

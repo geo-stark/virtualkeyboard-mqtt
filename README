@@ -1,3 +1,0 @@
-go get github.com/eclipse/paho.mqtt.golang
-go get github.com/pborman/getopt/v2
-go get github.com/rs/xid

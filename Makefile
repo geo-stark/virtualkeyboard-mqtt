@@ -5,6 +5,6 @@ all:
 
 install:
 	cp bin/$(NAME) /usr/local/sbin
-	cp *.service /lib/systemd/system
+	cp $(NAME).service /lib/systemd/system
 	systemctl daemon-reload
     

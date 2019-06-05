@@ -43,7 +43,7 @@ int vkb_open()
 	if (ioctl(fd_, UI_SET_EVBIT, EV_KEY) < 0)
 		return errno;
 
-	if ((err = vkb_set_info(0x1234, 0x5678, "Example device")) < 0)
+	if ((err = vkb_set_info(0x1111, 0x2222, "virtual keyboard")) != 0)
 		return err;
 
 	return 0;

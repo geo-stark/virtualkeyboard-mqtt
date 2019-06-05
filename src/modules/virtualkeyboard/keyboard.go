@@ -58,7 +58,6 @@ var keys = map[string]C.int{
 	"m": C.KEY_M,
 
 	" ":     C.KEY_SPACE,
-	"del":   C.KEY_DELETE,
 	"tab":   C.KEY_TAB,
 	"esc":   C.KEY_ESC,
 	"enter": C.KEY_ENTER,
@@ -72,6 +71,18 @@ var keys = map[string]C.int{
 	"caps":   C.KEY_CAPSLOCK,
 	"scroll": C.KEY_SCROLLLOCK,
 	"num":    C.KEY_NUMLOCK,
+
+	"mute":       C.KEY_MUTE,
+	"volumedown": C.KEY_VOLUMEDOWN,
+	"volumeup":   C.KEY_VOLUMEUP,
+	"playpause":  C.KEY_PLAYPAUSE,
+
+	"home":     C.KEY_HOME,
+	"end":      C.KEY_END,
+	"pageup":   C.KEY_PAGEUP,
+	"pagedown": C.KEY_PAGEDOWN,
+	"ins":      C.KEY_INSERT,
+	"del":      C.KEY_DELETE,
 
 	// aliases
 	"ctrl":  C.KEY_LEFTCTRL,
@@ -88,13 +99,16 @@ type Options struct {
 
 func OpenEx(opts *Options) error {
 	if res := C.vkb_open(); res != 0 {
-		return fmt.Errorf("system error %v", res)
+		return fmt.Errorf("errno %v", res)
 	}
 
 	for _, v := range keys {
 		C.vkb_add_key(v)
 	}
-	C.vkb_register()
+
+	if res := C.vkb_register(); res != 0 {
+		return fmt.Errorf("errno %v", res)
+	}
 	return nil
 }
 
@@ -115,7 +129,7 @@ func Emit(items []string) error {
 		}
 		key, present := keys[item]
 		if !present {
-			return fmt.Errorf("unknown key '%v'", item)
+			return fmt.Errorf("emit unknown key '%v'", item)
 		}
 		list[index] = key
 	}
