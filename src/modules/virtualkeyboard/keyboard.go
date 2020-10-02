@@ -57,11 +57,12 @@ var keys = map[string]C.int{
 	"n": C.KEY_N,
 	"m": C.KEY_M,
 
-	" ":     C.KEY_SPACE,
-	"tab":   C.KEY_TAB,
-	"esc":   C.KEY_ESC,
-	"enter": C.KEY_ENTER,
-	"sysrq": C.KEY_SYSRQ,
+	" ":         C.KEY_SPACE,
+	"tab":       C.KEY_TAB,
+	"esc":       C.KEY_ESC,
+	"enter":     C.KEY_ENTER,
+	"sysrq":     C.KEY_SYSRQ,
+	"backspace": C.KEY_BACKSPACE,
 
 	"lwin":   C.KEY_LEFTMETA,
 	"lctrl":  C.KEY_LEFTCTRL,
@@ -83,6 +84,19 @@ var keys = map[string]C.int{
 	"pagedown": C.KEY_PAGEDOWN,
 	"ins":      C.KEY_INSERT,
 	"del":      C.KEY_DELETE,
+	"up":       C.KEY_UP,
+	"down":     C.KEY_DOWN,
+	"left":     C.KEY_LEFT,
+	"right":    C.KEY_RIGHT,
+
+	"power":   C.KEY_POWER,
+	"suspend": C.KEY_SUSPEND,
+
+	"select":   C.KEY_SELECT,
+	"back":     C.KEY_BACK,
+	"forward":  C.KEY_FORWARD,
+	"homepage": C.KEY_HOMEPAGE,
+	"search":   C.KEY_SEARCH,
 
 	// aliases
 	"ctrl":  C.KEY_LEFTCTRL,
