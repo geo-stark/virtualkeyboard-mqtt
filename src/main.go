@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	virtualkeyboard "./modules/virtualkeyboard"
+	virtualkeyboard "virtualkeyboard-mqtt/modules/virtualkeyboard"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	getopt "github.com/pborman/getopt/v2"
 	"github.com/rs/xid"
