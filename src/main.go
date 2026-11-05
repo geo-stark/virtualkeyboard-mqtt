@@ -8,9 +8,10 @@ import (
 	"syscall"
 	"time"
 
-	virtualkeyboard "virtualkeyboard-mqtt/modules/virtualkeyboard"
+	"virtualkeyboard-mqtt/modules/virtualkeyboard"
+
 	mqtt "github.com/eclipse/paho.mqtt.golang"
-	getopt "github.com/pborman/getopt/v2"
+	"github.com/pborman/getopt/v2"
 	"github.com/rs/xid"
 )
 
@@ -18,6 +19,8 @@ func main() {
 	argHelp := getopt.BoolLong("help", 'h', "print help")
 	argURL := getopt.StringLong("url", 'u', "tcp://127.0.0.1:1883",
 		"broker url, e.g. tcp://127.0.0.1:8183")
+	argUsername := getopt.StringLong("username", 'n', "")
+	argPassword := getopt.StringLong("password", 'p', "")
 	argTopic := getopt.StringLong("topic", 't', "virtualkeyboard/emit",
 		"mqtt topic")
 
@@ -33,6 +36,12 @@ func main() {
 	defer virtualkeyboard.Close()
 
 	opts := mqtt.NewClientOptions()
+	if *argUsername != "" {
+		opts.SetUsername(*argUsername)
+	}
+	if *argPassword != "" {
+		opts.SetPassword(*argPassword)
+	}
 	opts.AddBroker(*argURL)
 	opts.SetMaxReconnectInterval(24 * time.Hour)
 
