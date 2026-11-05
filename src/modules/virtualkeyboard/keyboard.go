@@ -77,6 +77,9 @@ var keys = map[string]C.int{
 	"volumedown": C.KEY_VOLUMEDOWN,
 	"volumeup":   C.KEY_VOLUMEUP,
 	"playpause":  C.KEY_PLAYPAUSE,
+	"mediastop":  C.KEY_STOPCD,
+	"medianext":  C.KEY_NEXTSONG,
+	"mediaprev":  C.KEY_PREVIOUSSONG,
 
 	"home":     C.KEY_HOME,
 	"end":      C.KEY_END,
